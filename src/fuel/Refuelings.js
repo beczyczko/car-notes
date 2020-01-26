@@ -22,13 +22,13 @@ const Refuelings = () => {
     }, [refuelings]);
 
 
-    const handleRefuelingAdded = (amount, date) => {
+    const handleRefuelingAdded = (volume, date) => {
         //todo db wynieść zapis gdzieś do AddRefueling componentu
         // a tutaj tylko zebrać info, żeby dodać do listy, którą wyświetlamy
         const highestId = Math.max(...refuelings.map(r => r.id), 0);
         setRefuelings(prevRefuelings => [...prevRefuelings, {
             id: highestId + 1,
-            amount: amount,
+            volume: volume,
             date: date,
         }]);
     };

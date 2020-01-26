@@ -5,28 +5,29 @@ import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
-import { DateTimePicker } from "@material-ui/pickers";
+import {DateTimePicker} from "@material-ui/pickers";
 import moment from "moment";
 
 const AddRefueling = ({onRefuelingAdded}) => {
     const [open, setOpen] = React.useState(false);
 
-    const [amount, setAmount] = useState('');
+    const [volume, setVolume] = useState('');
     const [date, setDate] = useState(moment());
 
     const updateAmount = e => {
-        setAmount(e.target.value);
+        setVolume(e.target.value);
     };
 
     const onSave = () => {
         //todo db prawdziwy zapis
-        onRefuelingAdded(amount, date);
+        onRefuelingAdded(volume, date);
         onClose();
     };
 
     const openDialog = () => {
-        setAmount('');
+        setVolume('');
         setDate(moment());
         setOpen(true);
     };
@@ -47,10 +48,13 @@ const AddRefueling = ({onRefuelingAdded}) => {
                         autoFocus
                         margin="dense"
                         id="name"
-                        label="Fuel amount [L]" //todo db dodać taką 'L' na koniec pola wyszarzoną
+                        label="Fuel volume"
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">L</InputAdornment>,
+                        }}
                         type="number"
                         fullWidth
-                        value={amount}
+                        value={volume}
                         onChange={updateAmount}
                     />
                     <DateTimePicker
