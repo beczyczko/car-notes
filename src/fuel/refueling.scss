@@ -1,0 +1,25 @@
+.refueling {
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: flex-start;
+
+  border-top: 1px solid var(--separator-color);
+
+  &:first-of-type {
+    border: none;
+  }
+
+  p {
+    margin: var(--space-primary);
+  }
+
+  .amount {
+    font-weight: bold;
+  }
+
+  .date {
+
+  }
+}
