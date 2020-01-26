@@ -5,7 +5,7 @@ const Refueling = ({refueling}) => {
     return (
         <div className="refueling">
             <p className="amount">{refueling.amount} L</p>
-            <p className="date">{refueling.date.toDateString()}</p>
+            <p className="date">{refueling.date.format("YYYY-MM-DD")}</p>
             {/*todo human friendly date*/}
         </div>
     );
