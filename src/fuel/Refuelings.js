@@ -21,7 +21,6 @@ const Refuelings = () => {
         localStorage.setItem('refuelings', JSON.stringify(refuelings));
     }, [refuelings]);
 
-
     const handleRefuelingAdded = (volume, date) => {
         //todo db wynieść zapis gdzieś do AddRefueling componentu
         // a tutaj tylko zebrać info, żeby dodać do listy, którą wyświetlamy
@@ -33,12 +32,20 @@ const Refuelings = () => {
         }]);
     };
 
+    const handleRefuelingRemoved = (id) => {
+        const prevRefuelings = [...refuelings];
+        const index = prevRefuelings.findIndex(r => r.id === id);
+        prevRefuelings.splice(index, 1);
+        setRefuelings(prevRefuelings);
+    };
+
     return (
         <div>
             <AddRefueling onRefuelingAdded={handleRefuelingAdded}></AddRefueling>
             <List>
                 {refuelings.map(r => (
-                    <Refueling key={r.id} refueling={r}></Refueling>
+                    <Refueling key={r.id} refueling={r}
+                               onRefuelingRemoved={handleRefuelingRemoved}></Refueling>
                 ))}
             </List>
         </div>
