@@ -3,9 +3,9 @@ import Refueling from "./Refueling";
 import './refuelings.scss';
 import AddRefueling from "./add-refueling/AddRefueling";
 import moment from "moment";
+import List from "@material-ui/core/List";
 
 const Refuelings = () => {
-
     const [refuelings, setRefuelings] = useState([]);
 
     //todo db wynieść ten środek do jakiegoś refuelings providera?
@@ -36,10 +36,11 @@ const Refuelings = () => {
     return (
         <div>
             <AddRefueling onRefuelingAdded={handleRefuelingAdded}></AddRefueling>
-
-            {refuelings.map(r => (
-                <Refueling key={r.id} refueling={r}></Refueling>
-            ))}
+            <List>
+                {refuelings.map(r => (
+                    <Refueling key={r.id} refueling={r}></Refueling>
+                ))}
+            </List>
         </div>
     );
 };
